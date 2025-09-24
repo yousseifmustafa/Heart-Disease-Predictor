@@ -1,10 +1,6 @@
 # ❤️ CardioCheck AI: Heart Disease Prediction App
 
 An intelligent web application that leverages machine learning to predict the risk of heart disease based on key health indicators.
-
-![App Screenshot](https://i.imgur.com/your-screenshot-url.png)
-*(Note: Replace the link above with a URL to a screenshot of your app)*
-
 ---
 
 ## 📋 Table of Contents
