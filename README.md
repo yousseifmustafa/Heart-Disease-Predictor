@@ -115,8 +115,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 [Yousseif] - [yousseifmustafa2296@gmail.com]
 
-Project Link: [https://github.com/yousseifmustafa/Heart-Disease-Predictor.git](https://www.google.com/search?q=https://github.com/YourUsername/Heart-Disease-Predictor)
 
 ```
+Project Link: [https://github.com/yousseifmustafa/Heart-Disease-Predictor.git](https://www.google.com/search?q=https://github.com/YourUsername/Heart-Disease-Predictor)
 
 ```
