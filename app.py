@@ -1,28 +1,22 @@
-# app.py
-
 import streamlit as st
 import pandas as pd
 import joblib
 
-# Load the saved model and components
 model_components = joblib.load('final_model.pkl')
 model = model_components['model']
 scaler = model_components['scaler']
 numerical_cols = model_components['numerical_cols']
 selected_cols = model_components['selected_cols']
 
-# --- Page Configuration ---
 st.set_page_config(
     page_title="Heart Disease Prediction",
     page_icon="❤️",
     layout="centered"
 )
 
-# --- UI Elements ---
 st.title("❤️ Heart Disease Prediction App")
 st.write("Enter your health metrics below to predict the likelihood of heart disease.")
 
-# Create columns for input
 col1, col2 = st.columns(2)
 
 with col1:
@@ -42,7 +36,6 @@ with col2:
     ca = st.selectbox("Number of major vessels colored by flourosopy (ca)", [0, 1, 2, 3])
     thal = st.selectbox("Thalassemia (thal)", [1, 2, 3]) # Note: 0 is not a valid value in original dataset
 
-# --- Prediction Logic ---
 if st.button("Predict", key="predict_button"):
     # 1. Create a DataFrame from user input with all original feature names
     input_data = pd.DataFrame({
@@ -51,26 +44,18 @@ if st.button("Predict", key="predict_button"):
         'exang': [exang], 'oldpeak': [oldpeak], 'slope': [slope], 'ca': [ca], 'thal': [thal]
     })
 
-    # --- CORRECTED ORDER OF OPERATIONS ---
 
-    # 2. Scale the numerical features FIRST
-    # The scaler was trained on these specific columns, so we apply it here.
     numerical_cols_to_scale = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
     input_data[numerical_cols_to_scale] = scaler.transform(input_data[numerical_cols_to_scale])
 
-    # 3. One-Hot Encode the categorical features
     categorical_cols_original = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
     input_encoded = pd.get_dummies(input_data, columns=categorical_cols_original)
 
-    # 4. Align columns with the final model's expected features
-    # This step now happens AFTER scaling.
     input_aligned = input_encoded.reindex(columns=selected_cols, fill_value=0)
 
-    # 5. Make prediction
     prediction = model.predict(input_aligned)
     prediction_proba = model.predict_proba(input_aligned)
 
-    # 6. Display result
     st.subheader("Prediction Result")
     if prediction[0] == 1:
         st.error(f"High Risk of Heart Disease (Probability: {prediction_proba[0][1]:.2f})")
