@@ -109,13 +109,8 @@ Your web browser will automatically open to the application's interface. Enter t
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
------
+---
 
-## 👤 Contact
-
-[Yousseif] - [yousseifmustafa2296@gmail.com]
-
-
-
-Project Link: [https://github.com/yousseifmustafa/Heart-Disease-Predictor.git](https://www.google.com/search?q=https://github.com/YourUsername/Heart-Disease-Predictor)
-
+<div align="right">
+    Made with ❤️ by <a href="https://github.com/yousseifmustafa">Yousseif Mustafa</a>
+</div>
